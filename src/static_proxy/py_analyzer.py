@@ -8,8 +8,8 @@ import asttokens
 import proto.python.ast_pb2 as ast_pb2
 from util.job_util import read_proto_from_file, write_proto_to_file, exec_command
 from util.enum_util import LanguageEnum
-from static_base import StaticAnalyzer
-from pyt_run import pyt_run
+from .static_base import StaticAnalyzer
+from .pyt_run import pyt_run
 from proto.python.ast_pb2 import PkgAstResults, AstLookupConfig
 from proto.python.module_pb2 import ModuleStatic
 

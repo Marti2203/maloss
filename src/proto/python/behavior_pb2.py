@@ -13,8 +13,8 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-import info_pb2 as info__pb2
-import module_pb2 as module__pb2
+import proto.python.info_pb2 as info__pb2
+import proto.python.module_pb2 as module__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(

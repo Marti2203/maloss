@@ -12,7 +12,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-import ast_pb2 as ast__pb2
+import proto.python.ast_pb2 as ast__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(

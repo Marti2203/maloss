@@ -226,12 +226,12 @@ class PackageManagerProxy(object):
             else:
                 versions = []
                 # sorted versions by upload dates, and choose them based on a gap of min_gap_days
-                sorted_version_date = sorted(version_date, key=lambda (ver, dt): dt, reverse=True)
+                sorted_version_date = sorted(version_date, key=lambda ver, dt: dt, reverse=True)
                 for _, ver_grp in itertools.groupby(
                         sorted_version_date,
-                        lambda (ver, dt): int((max_date - dt).total_seconds()/min_gap_days_delta.total_seconds())):
+                        lambda ver, dt: int((max_date - dt).total_seconds()/min_gap_days_delta.total_seconds())):
                     # v1.2.3 and 1.2.3 are both allowed
-                    sorted_ver_grp = sorted(ver_grp, key=lambda (ver, dt): map(lambda digit: int(digit) if digit else 0, ver.strip('v').split('.')), reverse=True)
+                    sorted_ver_grp = sorted(ver_grp, key=lambda ver, dt: map(lambda digit: int(digit) if digit else 0, ver.strip('v').split('.')), reverse=True)
                     if with_time:
                         versions.append(sorted_ver_grp[0])
                     else:

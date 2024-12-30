@@ -231,7 +231,7 @@ class PypiProxy(PackageManagerProxy):
         pip_cmd = 'pip2' if self._get_py_version(pkg_name=pkg_name, pkg_version=pkg_version) == 'python2' else 'pip3'
         freeze_cmd = [pip_cmd, 'freeze']
         installed_pkgs_str = exec_command('pip freeze', freeze_cmd, ret_stdout=True, env=install_env)
-        installed_pkgs = [dep_pkg.split('==') for dep_pkg in filter(bool, installed_pkgs_str.split('\n'))
+        installed_pkgs = [dep_pkg.split('==') for dep_pkg in filter(bool, str(installed_pkgs_str).split('\n'))
                           if len(dep_pkg.split('==')) == 2]
         dep_pkgs = {dep_name: dep_version for dep_name, dep_version in installed_pkgs if dep_name.lower() in dep_pkg_names}
         return dep_pkgs

@@ -347,8 +347,8 @@ def pyt_run(pkg_path, config_path, out_path):
     # Run PyT on given package, output JSON-formatted results
     logging.warning("Running PyT analysis on %s with pyt config %s", pkg_path, temp_trigger_words_path.name)
     temp_result_path = tempfile.NamedTemporaryFile(suffix=".json")
-    pyt_cmd = ['python3.6', '-m', 'pyt', '-o', temp_result_path.name, '-t', temp_trigger_words_path.name, '-j', '-r', pkg_path]
-    exec_command('python3.6 -m pyt', pyt_cmd)
+    pyt_cmd = ['python3.8', '-m', 'pyt', '-o', temp_result_path.name, '-t', temp_trigger_words_path.name, '-j', '-r', pkg_path]
+    exec_command('python3.8 -m pyt', pyt_cmd)
 
     # Format PyT (.json) results into proper protobuf outputs
     logging.warning("Converting results in %s to protobuf format", temp_result_path.name)

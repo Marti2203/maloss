@@ -34,7 +34,7 @@ class CompressedFile (object):
 
     @classmethod
     def is_magic(self, data):
-        return data.startswith(self.magic)
+        return data.startswith(self.magic.encode())
 
     def open(self):
         return None
@@ -190,7 +190,7 @@ def decompress_file(filename):
         if file_with_meta.file_type in ('gz', 'bz2'):
             temp_filename = os.path.join(extract_dir, splitext(basename(filepath))[0])
             logging.warning("writing content to %s", temp_filename)
-            open(temp_filename, 'w').write(file_obj.read())
+            open(temp_filename, 'wb').write(file_obj.read())
 
             # if the extracted file is again compressed
             if get_file_with_meta(temp_filename) is not None:

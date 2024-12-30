@@ -2,10 +2,6 @@ import logging
 from os.path import exists, join, basename
 from util.enum_util import LanguageEnum
 from static_proxy.py_analyzer import PyAnalyzer
-from static_proxy.js_analyzer import JsAnalyzer
-from static_proxy.java_analyzer import JavaAnalyzer
-from static_proxy.php_analyzer import PhpAnalyzer
-from static_proxy.ruby_analyzer import RubyAnalyzer
 
 
 def get_static_proxy_for_language(language):

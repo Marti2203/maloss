@@ -437,7 +437,7 @@ def interpret_result(infile, outfile, data_type, language, package_manager=None,
         static_proxy = get_static_proxy_for_language(language=language)
         pkg2ver2detail = {}
         for pkg, ver2compare_ast in pkg2ver2compare_ast.items():
-            ver_time = sorted(pm_proxy.get_versions(pkg_name=pkg, max_num=-1, with_time=True), key=lambda (version, _): map(lambda digit: int(digit) if digit else 0, version.strip('v').split('.')), reverse=True)
+            ver_time = sorted(pm_proxy.get_versions(pkg_name=pkg, max_num=-1, with_time=True), key=lambda version, _: map(lambda digit: int(digit) if digit else 0, version.strip('v').split('.')), reverse=True)
             ver_set = {v for v, t in ver_time}
             for ver, compare_ast in ver2compare_ast.items():
                 if ver not in ver_set:

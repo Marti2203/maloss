@@ -199,14 +199,14 @@ class PyAnalyzer(StaticAnalyzer):
         # try python3
         except SyntaxError as se:
             logging.error("Syntax error %s, now trying to parse %s again in python3!", se, analyze_path)
-            astgen_py3_cmd = ['python3', 'astgen_py3.py', analyze_path, outfile, '-c', configpath]
+            astgen_py3_cmd = ['python3.6', 'astgen_py3.py', analyze_path, outfile, '-c', configpath]
             if root is not None:
                 astgen_py3_cmd.extend(['-b', root])
             if pkg_name is not None:
                 astgen_py3_cmd.extend(['-n', pkg_name])
             if pkg_version is not None:
                 astgen_py3_cmd.extend(['-v', pkg_version])
-            exec_command("python3 astgen", astgen_py3_cmd, cwd="static_proxy")
+            exec_command("python3.6 astgen", astgen_py3_cmd, cwd="static_proxy")
         except Exception as e:
             logging.error("Fatal error %s running astgen for %s!", e, analyze_path)
 

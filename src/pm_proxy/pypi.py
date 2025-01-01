@@ -39,12 +39,12 @@ class PypiProxy(PackageManagerProxy):
             metadata = self.get_metadata(pkg_name=pkg_name, pkg_version=pkg_version)
             if not metadata or 'info' not in metadata or 'classifiers' not in metadata['info']:
                 logging.error("pkg %s don't have classifiers! defaulting to python!", pkg_name)
-                self._query_cache[key] = 'python3'
+                self._query_cache[key] = 'python3.6'
             else:
                 if any(cf.startswith('Programming Language :: Python :: 2') for cf in metadata['info']['classifiers']):
                     self._query_cache[key] = 'python2'
                 elif any(cf.startswith('Programming Language :: Python :: 3') for cf in metadata['info']['classifiers']):
-                    self._query_cache[key] = 'python3'
+                    self._query_cache[key] = 'python3.6'
                 else:
                     logging.error("pkg %s has unknown classifiers %s!", pkg_name, metadata['info']['classifiers'])
                     self._query_cache[key] = 'python2'
@@ -335,8 +335,8 @@ class PypiProxy(PackageManagerProxy):
             main_cmd = ['python', 'main.py', pkg_name]
             exec_command('python main.py', main_cmd, cwd='pm_proxy/scripts', timeout=timeout)
         else:
-            main_cmd = ['python3', 'main.py', pkg_name]
-            exec_command('python3 main.py', main_cmd, cwd='pm_proxy/scripts', timeout=timeout)
+            main_cmd = ['python3.6', 'main.py', pkg_name]
+            exec_command('python3.6 main.py', main_cmd, cwd='pm_proxy/scripts', timeout=timeout)
 
     def has_main(self, pkg_name, pkg_version=None, binary=False, with_dep=False):
         # if using setuptools, entry_points in setup.py
@@ -351,8 +351,8 @@ class PypiProxy(PackageManagerProxy):
             exercise_cmd = ['python', 'exercise.py', pkg_name]
             exec_command('python exercise.py', exercise_cmd, cwd='pm_proxy/scripts', timeout=timeout)
         else:
-            exercise_cmd = ['python3', 'exercise_py3.py', pkg_name]
-            exec_command('python exercise_py3.py', exercise_cmd, cwd='pm_proxy/scripts', timeout=timeout)
+            exercise_cmd = ['python3.6', 'exercise_py3.py', pkg_name]
+            exec_command('python exercise_py3.6.py', exercise_cmd, cwd='pm_proxy/scripts', timeout=timeout)
 
     def has_exercise(self, pkg_name, pkg_version=None, binary=False, with_dep=False):
         # if using setuptools, py_modules in setup.py

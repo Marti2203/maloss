@@ -38,8 +38,8 @@ class PypiProxy(PackageManagerProxy):
         if key not in self._query_cache:
             metadata = self.get_metadata(pkg_name=pkg_name, pkg_version=pkg_version)
             if not metadata or 'info' not in metadata or 'classifiers' not in metadata['info']:
-                logging.error("pkg %s don't have classifiers! defaulting to python2!", pkg_name)
-                self._query_cache[key] = 'python2'
+                logging.error("pkg %s don't have classifiers! defaulting to python!", pkg_name)
+                self._query_cache[key] = 'python3'
             else:
                 if any(cf.startswith('Programming Language :: Python :: 2') for cf in metadata['info']['classifiers']):
                     self._query_cache[key] = 'python2'
